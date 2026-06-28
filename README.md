@@ -54,7 +54,7 @@ counter-app/
 
 4. **Access your site** at:
    ```
-   https://YOUR-USERNAME.github.io/counter-app/
+   https://swayam933.github.io/Counter-App/
    ```
 
 ---
