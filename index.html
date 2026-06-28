@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Counter using HTML</title>
+    <style>
+        body {
+            background-color: #1a1a2e;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        #count-display {
+            font-size: 1.1rem;
+            border-bottom: 2px solid red;
+            display: inline-block;
+            padding-bottom: 4px;
+            margin-bottom: 10px;
+        }
+
+        #error-msg {
+            color: red;
+            display: none;
+            margin-bottom: 15px;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: 2px solid white;
+            background: transparent;
+            color: white;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        #clear-btn {
+            background-color: white;
+            color: black;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Counter using HTML</h1>
+    <div id="count-display">Your Current Count is : <span id="count">0</span></div>
+    <br>
+    <div id="error-msg">Error : Cannot go below 0</div>
+
+    <div class="btn-container">
+        <button onclick="decrement()">Decrement</button>
+        <button onclick="increment()">Increment</button>
+        <button id="clear-btn" onclick="clearCount()">Clear</button>
+    </div>
+
+    <script>
+        let count = 0;
+
+        // Clear button hidden at count=0
+        updateClearBtn();
+
+        function increment() {
+            count++;
+            document.getElementById('count').innerText = count;
+            document.getElementById('error-msg').style.display = 'none';
+            updateClearBtn();
+        }
+
+        function decrement() {
+            if (count === 0) {
+                document.getElementById('error-msg').style.display = 'block';
+            } else {
+                count--;
+                document.getElementById('count').innerText = count;
+                document.getElementById('error-msg').style.display = 'none';
+                updateClearBtn();
+            }
+        }
+
+        function clearCount() {
+            count = 0;
+            document.getElementById('count').innerText = count;
+            document.getElementById('error-msg').style.display = 'none';
+            updateClearBtn();
+        }
+
+        function updateClearBtn() {
+            const clearBtn = document.getElementById('clear-btn');
+            clearBtn.style.display = count === 0 ? 'none' : 'block';
+        }
+    </script>
+
+</body>
+</html>
